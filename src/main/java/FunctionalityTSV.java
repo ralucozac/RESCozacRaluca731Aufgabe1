@@ -102,6 +102,7 @@ public static class FunctionalityTSV {
                 .forEach(event -> System.out.println(event.getDatum() + ": " + event.getHeld() + " vs " + event.getAntagonist()));
     }
 
+
 //        public void saveConfruntationCounts() throws IOException {
 //            Map<String, Integer> hospitalCasesCounts = new HashMap<>();
 //
