@@ -3,10 +3,11 @@
 import java.io.IOException;
 import java.util.Scanner;
 
+
 public class Main {
     public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
-        FunctionalityTSV functionalityTSV = new FunctionalityTSV();
+        EventRecord.FunctionalityTSV functionalityTSV = new EventRecord.FunctionalityTSV();
         functionalityTSV.readFromTSV();
         System.out.println(functionalityTSV.getEvents());
 
@@ -14,5 +15,7 @@ public class Main {
         int minInfluence = scanner.nextInt();
 
         functionalityTSV.showHerosWithBiggerInfluence( minInfluence);
+
+        functionalityTSV.showEventsAfterDate();
     }
 }

@@ -26,35 +26,35 @@ class EventRecord {
     private String antagonist;
     private Confrontation confrontation;
     private String location;
-    private LocalDate datum;
+    private String datum;
     private double influence;
 
-    public EventRecord(int id, String held, String antagonist, Confrontation confrontation, String location, LocalDate datum, double influence) {
+    public EventRecord(int id, java.lang.String held, java.lang.String antagonist, Confrontation confrontation, java.lang.String location, String datum, double influence) {
         this.id = id;
         this.held = held;
         this.antagonist = antagonist;
         this.confrontation = confrontation;
         this.location = location;
-        this.datum = datum;
+        this.datum=datum;
         this.influence = influence;
     }
 
     @Override
-    public String toString() {
+    public java.lang.String toString() {
         return "EventRecord{" +
                 "id=" + id +
                 ", held='" + held + '\'' +
                 ", antagonist='" + antagonist + '\'' +
                 ", confrontation=" + confrontation +
                 ", location='" + location + '\'' +
-                ", datum=" + datum +
+                ", datum=" + datum  + '\'' +
                 ", influence=" + influence +
                 '}';
     }
-}
 
-// Functionality class to read from the TSV file
-public class FunctionalityTSV {
+
+    // Functionality class to read from the TSV file
+public static class FunctionalityTSV {
     private final List<EventRecord> events = new ArrayList<>();
 
     /**
@@ -72,7 +72,7 @@ public class FunctionalityTSV {
                         parts[2],
                         Confrontation.fromString(parts[3]),
                         parts[4],
-                        LocalDate.parse(parts[5]),
+                        parts[5],
                         Double.parseDouble(parts[6])
                 ));
             }
@@ -92,4 +92,14 @@ public class FunctionalityTSV {
 
     }
 
-}
+    public void showEventsAfterDate() {
+
+
+        events.stream()
+                .filter(event -> event.getLocation().equals("GALAKTISCH"))
+                .filter(event -> LocalDate.parse(event.getDatum()).isAfter(thresholdDate)) //  Filter by date
+                .sorted(Comparator.comparing(EventRecord::getDatum)) // Sort ascending
+                .forEach(event -> System.out.println(event.getDatum() + ": " + event.getHeld() + " vs " + event.getAntagonist()));
+    }
+
+}}
