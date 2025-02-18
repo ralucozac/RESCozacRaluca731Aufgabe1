@@ -93,7 +93,7 @@ public static class FunctionalityTSV {
     }
 
     public void showEventsAfterDate() {
-
+        LocalDate thresholdDate = LocalDate.parse("2021-11-13");
 
         events.stream()
                 .filter(event -> event.getLocation().equals("GALAKTISCH"))
