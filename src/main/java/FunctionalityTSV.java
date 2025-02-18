@@ -82,4 +82,14 @@ public class FunctionalityTSV {
     public List<EventRecord> getEvents() {
         return events;
     }
+
+
+
+    public void showHerosWithBiggerInfluence(double minInfluece) {
+        events.stream()
+                .filter(event -> event.getInfluence() >= minInfluece)
+                .forEach(System.out::println);
+
+    }
+
 }
