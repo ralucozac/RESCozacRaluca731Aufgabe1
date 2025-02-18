@@ -102,4 +102,34 @@ public static class FunctionalityTSV {
                 .forEach(event -> System.out.println(event.getDatum() + ": " + event.getHeld() + " vs " + event.getAntagonist()));
     }
 
+//        public void saveConfruntationCounts() throws IOException {
+//            Map<String, Integer> hospitalCasesCounts = new HashMap<>();
+//
+//            // Step 1: Count events for each hospital
+//            for (EventRecord event : events) {
+//                Confrontation hospital = event.getConfrontation();
+//
+//                // If hospital exists in map, increase count
+//                if (hospitalCasesCounts.containsKey(hospital)) {
+//                    int currentCount = hospitalCasesCounts.get(hospital);
+//                    hospitalCasesCounts.put(hospital, currentCount + 1);
+//                }
+//                // If hospital is not in map, add it with count 1
+//                else {
+//                    hospitalCasesCounts.put(hospital, 1);
+//                }
+//            }
+//
+//            // Step 2: Sort hospitals by event count (descending)
+//            List<Map.Entry<String, Integer>> sortedHospitals = new ArrayList<>(hospitalCasesCounts.entrySet());
+//            sortedHospitals.sort((a, b) -> b.getValue().compareTo(a.getValue())); // Sort by count descending
+//
+//            // Step 3: Write results to "ergebnis.txt"
+//            List<String> outputLines = new ArrayList<>();
+//            for (Map.Entry<String, Integer> entry : sortedHospitals) {
+//                outputLines.add(entry.getKey() + "#" + entry.getValue());
+//            }
+//            Files.write(Paths.get("src/main/java/xml/ergebnis.txt"), outputLines);
+//        }
+
 }}
